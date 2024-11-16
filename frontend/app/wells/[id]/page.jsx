@@ -31,71 +31,6 @@ export default function Page() {
         })();
     }, []);
 
-    const layout = (
-        <main>
-
-            <h1 className="text-5xl ml-[82px] font-semibold">Куст 2, Сургут</h1>
-            <div className="flex flex-row justify-between flex-grow mt-12">
-                {/* sidebar */}
-                <div className="flex flex-col justify-between">
-                    <div className="bg-white px-2 py-4 rounded-full space-y-3">
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="bg-white px-2 py-3 rounded-full space-y-3">
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-white rounded-full">
-                            <Image
-                                src="/Setting_alt_line_light.svg"
-                                width="25"
-                                height="25"
-                                alt="dh"
-                            />
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-white rounded-full">
-                            <Image
-                                src="/Sign_out_circle_light.svg"
-                                width="25"
-                                height="25"
-                                alt="dh"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex flex-col flex-grow justify-between mx-6 space-y-6">
-                    <div className="flex flex-row flex-grow space-x-6 max-h-[50%]">
-                        {/* Затраты */}
-                        <ExpensesGraph
-                            data={well?.wellDayHistory.filter(
-                                (elem) =>
-                                    DateTime.fromISO(
-                                        elem.date_fact,
-                                    ).toMillis() >
-                                    DateTime.now()
-                                        .minus({ weeks: 1 })
-                                        .toMillis(),
-                            )}
-                        />
-
-                        {/* дебит скважины */}
-                        <div className="bg-white flex-grow rounded-2xl"></div>
-                    </div>
-
-                    <div className="flex flex-col flex-grow max-h-[50%]"></div>
-                </div>
-
-                <div className="max-w-[282px] bg-white flex-grow rounded-2xl"></div>
-            </div>
-        </main>
-    );
-
     return (
         <main>
             <div className="my-[35px] flex w-full justify-between pl-[82px]">
@@ -158,8 +93,8 @@ export default function Page() {
                     </div>
                 </div>
 
-                <div className="flex flex-col flex-grow justify-between mx-6 space-y-6">
-                    <div className="flex flex-row flex-grow space-x-6 max-h-[50%]">
+                <div className="flex flex-col flex-grow justify-between mx-6 space-y-6 max-h-[529px]">
+                    <div className="flex flex-row w-full justify-between">
                         {/* Затраты */}
                         <ExpensesGraph
                             data={well?.wellDayHistory.filter(
@@ -179,13 +114,70 @@ export default function Page() {
                         />
 
                         {/* дебит скважины */}
-                        <div className="bg-white max-w-[616px] w-full h-[255px] rounded-[32px]"></div>
+                        <div className="bg-white max-w-[616px] w-full h-[255px] rounded-[32px] flex flex-col">
+                            <div className="w-full flex justify-between">
+                                <div className="flex">
+                                    <div className="w-[38px] h-[38px] bg-[#F5F5F5] rounded-full flex justify-center items-center mt-[20px] ml-[25px]">
+                                        <img src="/diagramma.svg" alt="diagram" />
+                                    </div>
+                                    <div className="mt-[27px] flex">
+                                        <span className="font-medium text-[16px] ml-[10px]">Дебит скважины</span>
+                                        <span className="text-[#5D5D5D] font-medium text-[13px]">м</span>
+                                        <span className="text-[#5D5D5D] font-medium text-[10px]">3</span>
+                                    </div>
+                                </div>
+                                {/* кнопка переключения прогноза*/}
+                                <div className="w-[151px] h-[38px] bg-[#F5F5F5] rounded-[42px] flex items-center mt-[20px] mr-[29px]">
+                                    <span className="bg-black px-[11px] text-white rounded-full text-[11px] font-medium py-[12px]">Актуальное</span>
+                                    <span className="font-medium text-[11px] ml-[7px]">Прогноз</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                    {/* Виджеты + помпа */}
+                    <div className="w-full flex justify-between">
+                        <div className="max-w-[610px] h-[250px] bg-white w-full rounded-[32px] flex flex-col">
+                            <div className="w-full flex justify-between">
+                                <div className="flex">
+                                    <div className="w-[38px] h-[38px] bg-[#F5F5F5] rounded-full flex justify-center items-center mt-[20px] ml-[25px]">
+                                        <img src="/diagramma.svg" alt="diagram" />
+                                    </div>
+                                    <div className="mt-[27px] flex">
+                                        <span className="font-medium text-[16px] ml-[10px]">Электропотребление</span>
+                                        <span className="text-[#5D5D5D] font-medium text-[13px]">КВт</span>
+                                        <span className="text-[#5D5D5D] font-medium text-[10px]">Ч</span>
+                                    </div>
+                                </div>
+                                {/* кнопка переключения прогноза*/}
+                                <div className="w-[151px] h-[38px] bg-[#F5F5F5] rounded-[42px] flex items-center mt-[20px] mr-[29px]">
+                                    <span className="bg-black px-[11px] text-white rounded-full text-[11px] font-medium py-[12px]">Актуальное</span>
+                                    <span className="font-medium text-[11px] ml-[7px]">Прогноз</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col h-full justify-between">
+                            <div className="flex">
+                                <div className="w-[140px] h-[135px] bg-[#E7DFF6] rounded-[32px] flex flex-col">
+                                    <span className="text-[11px] font-medium max-w-[59px] mt-[17px] ml-[17px]">Наработка насоса</span>
+                                    <span className="text-[36px] font-medium ml-[17px] mt-[10px]">20ч</span>
+                                </div>
+                                <div className="w-[140px] h-[135px] bg-[#ffffff] rounded-[32px] ml-[12px] flex flex-col">
+                                    <span className="text-[11px] font-medium mt-[17px] ml-[17px]">Местоположение скважины</span>
+                                    <span className="font-semibold text-[24px] ml-[17px] mt-[22px]">Хвойное</span>
+                                </div>
+                            </div>
+                            <div className="w-[292px] h-[98px] bg-white rounded-[32px] flex flex-col">
+                                <span className="font-medium text-xs color-black ml-[28px] mt-[17px]">Время работы скважины</span>
+                                <span className="font-medium text-[22px] ml-[28px] mt-[9px]">2 года, 8 месяцев</span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 
-                <div className="max-w-[282px] h-[529px] bg-white w-full rounded-[32px]"></div>
+                <div className="max-w-[282px] h-[529px] bg-white w-full rounded-[32px]">
+                </div>
             </div>
         </main>
     );

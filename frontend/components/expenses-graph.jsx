@@ -16,7 +16,7 @@ const chartConfig = {
     },
     expenses: {
         label: "Затраты",
-        color: "hsl(var(--chart-2))",
+        color: "#B591EF",
     },
 };
 
@@ -101,7 +101,7 @@ export default function Component({ data, mode = "week" }) {
                     tick: ({ x, y, payload }) => {
                         const value =
                             payload.index === 0 ||
-                            payload.index === data.length - 1
+                            payload.index === data?.length - 1
                                 ? null
                                 : DateTime.fromISO(payload.value).toFormat(
                                       "LLL",
@@ -130,12 +130,12 @@ export default function Component({ data, mode = "week" }) {
     }
 
     return (
-        <div className="bg-white max-w-[284px] h-[255px] w-full rounded-[32px]">
-            <p className="font-medium text-[#686868] mt-0">Общие траты</p>
+        <div className="bg-white max-w-[284px] h-[255px] w-full rounded-[32px] flex flex-col">
+            <p className="font-medium text-[#686868] mt-[24px] ml-[24px] text-[16px]">Общие траты</p>
             <p className="text-2xl font-semibold mt-2">₽120,000</p>
             <p className="text-[#767676] mt-[3px]">+20% с прошлого дня</p>
 
-            <ChartContainer className="w-full" config={chartConfig}>
+            <ChartContainer className="w-[90%] self-center" config={chartConfig}>
                 <LineChart accessibilityLayer data={preparingData}>
                     <XAxis {...XAxisProps()} />
                     <YAxis
