@@ -208,14 +208,14 @@ export default function Page() {
                                         elem.date_fact,
                                     ).toMillis() >
                                         DateTime.now()
-                                            .minus({ week: 1 })
+                                            .minus({ year: 1 })
                                             .toMillis()) &
                                     (DateTime.fromISO(
                                         elem.date_fact,
                                     ).toMillis() <
                                         DateTime.now().toMillis()),
                             )}
-                            mode="week"
+                            mode="year"
                         />
 
                         {/* дебит скважины */}

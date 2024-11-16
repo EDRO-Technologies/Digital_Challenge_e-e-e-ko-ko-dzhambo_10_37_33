@@ -97,7 +97,7 @@ export default function Component({ data, mode = "week" }) {
                     dataKey: "date_fact",
                     tickLine: false,
                     axisLine: false,
-                    interval: 50,
+                    interval:1,
                     tick: ({ x, y, payload }) => {
                         const value =
                             payload.index === 0 ||
@@ -136,9 +136,7 @@ export default function Component({ data, mode = "week" }) {
             <p className="text-[#767676] mt-[3px]">+20% с прошлого дня</p>
 
             <ChartContainer className="w-full" config={chartConfig}>
-                <LineChart accessibilityLayer data={data
-                    
-                }>
+                <LineChart accessibilityLayer data={preparingData}>
                     <XAxis {...XAxisProps()} />
                     <YAxis
                         hide={true}
