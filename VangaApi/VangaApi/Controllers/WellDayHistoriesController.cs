@@ -19,19 +19,24 @@ namespace VangaApi.Controllers
         //[Obsolete]
         public async Task<IActionResult> GetWellDayHistories([FromBody] WellRequest request)
         {
-            var response = await _supabase.From<WellDayHistory>().Where(w => w.Well == request.WellId).Get();
-            //var modeles = response.Models.ToArray();
-            var data = response.Models.Select(record => new WellDayHistoryDTO
-            {
-                WellId = (int)record.Well,
-            }).ToList();
+            var response = await _supabase.From<WellDayHistorySup>().Where(w => w.Well == request.WellId).Get();
+            //var list = Program.nr.ForecastData(response.Models, request.WellId);
 
-            return Ok(data);
+            
+            //var list = Program.nr.ForecastDataForAllData(request.WellId, request.AtributeId);
+            var list = Program.nr.ForecastDataForFilteredData(response.Models, request.WellId, request.AtributeId);
+
+            
+
+
+
+            return Ok(list);
         }
     }
     public class WellRequest
     {
-        //[JsonPropertyName("WellId")]
         public int WellId { get; set; }
+        public int AtributeId { get; set; }
+
     }
 }

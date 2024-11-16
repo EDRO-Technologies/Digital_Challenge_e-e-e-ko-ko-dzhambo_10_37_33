@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.ML;
 using VangaApi;
 
-class Programm
+class Program
 {
-    public static Neiro nr = new Neiro();
+    public static Neiro nr;
     public static void Main()
     {
+        nr = new Neiro();
         CreateHostBuilder().Build().Run();
-
 
         var builder = WebApplication.CreateBuilder();
 
