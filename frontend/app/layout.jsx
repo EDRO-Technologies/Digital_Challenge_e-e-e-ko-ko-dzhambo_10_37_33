@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -10,12 +11,19 @@ export default function RootLayout({ children }) {
     return (
         <html lang="ru">
             <body>
-                <div className="cont">
-                    <div className="wrapper">
-                        <Header />
-                        {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="light"
+                    enableSystem
+                    
+                >
+                    <div className="cont">
+                        <div className="wrapper">
+                            <Header />
+                            {children}
+                        </div>
                     </div>
-                </div>
+                </ThemeProvider>
             </body>
         </html>
     );
