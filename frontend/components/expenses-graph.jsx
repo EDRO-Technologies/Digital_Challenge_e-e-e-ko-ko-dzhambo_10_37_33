@@ -1,68 +1,13 @@
-// "use client";
-
-// import { Bar, BarChart } from "recharts";
-// import { ChartContainer } from "@/components/ui/chart";
-
-// const chartConfig = {
-//     date_fact: {
-//         label: "Дата",
-//         color: "#2563eb",
-//     },
-//     expenses: {
-//         label: "Затраты",
-//         color: "#60a5fa",
-//     },
-// };
-
-// export default function ExpensesGraph({ data }) {
-//     console.log(data)
-
-//     return (
-//         <div className="bg-white max-w-[284px] flex-grow rounded-2xl p-4">
-//             <p className="font-medium text-[#686868] mt-0">Общие траты</p>
-//             <p className="text-2xl font-semibold mt-2">₽120,000</p>
-//             <p className="text-[#767676] mt-[3px]">+20% с прошлого дня</p>
-
-//             <ChartContainer
-//                 config={chartConfig}
-//                 className=" w-full"
-//             >
-//                 <BarChart accessibilityLayer data={data}>
-//                     <Bar
-//                         dataKey="expenses"
-//                         fill="#2563eb"
-//                         radius={4}
-//                     />
-//                     <Bar
-//                         dataKey="date_fact"
-//                         fill="#60a5fa"
-//                         radius={4}
-//                     />
-//                 </BarChart>
-//             </ChartContainer>
-//         </div>
-//     );
-// }
-
 "use client";
 
-import {
-    Area,
-    AreaChart,
-    CartesianGrid,
-    Legend,
-    Line,
-    LineChart,
-    XAxis,
-    YAxis,
-} from "recharts";
-import { Card, CardContent } from "@/components/ui/card";
+import { Line, LineChart, XAxis, YAxis } from "recharts";
 import {
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart";
 import { DateTime } from "luxon";
+import { useEffect, useState } from "react";
 
 const chartConfig = {
     date_fact: {
@@ -75,8 +20,115 @@ const chartConfig = {
     },
 };
 
-export default function Component({ data }) {
-    console.log(data);
+// mode is week, month, year
+export default function Component({ data, mode = "week" }) {
+    const [preparingData, setPreparingData] = useState(data);
+
+    useEffect(() => {
+        if (mode === "year") {
+            const newData = [];
+
+            for (let i = 1; i < 360; i += 30) {
+                newData.push(data?.[i]);
+            }
+
+            setPreparingData(newData);
+        }
+    }, [data, setPreparingData]);
+
+    function XAxisProps() {
+        switch (mode) {
+            case "week": {
+                return {
+                    dataKey: "date_fact",
+                    tickLine: false,
+                    axisLine: false,
+                    interval: 0,
+                    tick: {
+                        fontSize: 10,
+                    },
+                    tickFormatter: (value) => {
+                        switch (DateTime.fromISO(value).weekday) {
+                            case 1:
+                                return "пн";
+                            case 2:
+                                return "вт";
+                            case 3:
+                                return "ср";
+                            case 4:
+                                return "чт";
+                            case 5:
+                                return "пт";
+                            case 6:
+                                return "сб";
+                            case 7:
+                                return "вс";
+                            default:
+                                return "";
+                        }
+                    },
+                };
+            }
+            case "month": {
+                return {
+                    dataKey: "date_fact",
+                    tickLine: false,
+                    axisLine: false,
+                    interval: 4,
+                    tick: ({ x, y, payload }) => {
+                        const value =
+                            payload.index === 0 ||
+                            payload.index === data.length - 1
+                                ? null
+                                : DateTime.fromISO(payload.value).toFormat(
+                                      "LL dd",
+                                  );
+
+                        return (
+                            <text x={x} y={y} textAnchor="middle">
+                                {value}
+                            </text>
+                        );
+                    },
+                };
+            }
+            case "year": {
+                return {
+                    dataKey: "date_fact",
+                    tickLine: false,
+                    axisLine: false,
+                    interval: 50,
+                    tick: ({ x, y, payload }) => {
+                        const value =
+                            payload.index === 0 ||
+                            payload.index === data.length - 1
+                                ? null
+                                : DateTime.fromISO(payload.value).toFormat(
+                                      "LLL",
+                                      {
+                                          locale: "ru-RU",
+                                      },
+                                  );
+
+                        return (
+                            <text x={x} y={y} textAnchor="middle">
+                                {value}
+                            </text>
+                        );
+                    },
+                };
+            }
+            default: {
+                return {
+                    dataKey: "date_fact",
+                    tickLine: false,
+                    axisLine: false,
+                    tickFormatter: () => "",
+                };
+            }
+        }
+    }
+
     return (
         <div className="bg-white max-w-[284px] flex-grow rounded-2xl p-4">
             <p className="font-medium text-[#686868] mt-0">Общие траты</p>
@@ -84,28 +136,10 @@ export default function Component({ data }) {
             <p className="text-[#767676] mt-[3px]">+20% с прошлого дня</p>
 
             <ChartContainer className="w-full" config={chartConfig}>
-                <LineChart
-                    accessibilityLayer
-                    data={data}
-                    margin={{
-                        left: 4,
-                        right: 4,
-                    }}
-                >
-                    <XAxis
-                        dataKey="date_fact"
-                        tickLine={false}
-                        axisLine={false}
-                        tickCount={4}
-                        tickFormatter={(value) => {
-                            switch(value) {
-                                case 1: return "пн",
-                                case 3: return "пн",
-                                case 1: return "пн",
-                            }
-                            
-                        }}
-                    />
+                <LineChart accessibilityLayer data={data
+                    
+                }>
+                    <XAxis {...XAxisProps()} />
                     <YAxis
                         hide={true}
                         tickLine={false}
