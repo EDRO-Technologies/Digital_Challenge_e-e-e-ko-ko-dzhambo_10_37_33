@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
+
 const navs = [
     {
         title: "Регистрация",
@@ -33,11 +34,10 @@ export default function Header() {
     const pathname = usePathname();
 
     return (
-        <div className="flex flex-row justify-between items-center w-full bg-white rounded-full lg:mt-7 h-20 py-5 p-10">
-            {/* logo */}
-            <div>
-                <Link href="/">
-                    <Image width="76" height="38" src="/Logo.svg" alt="logo" />
+        <div className="flex flex-row justify-between h-[78px] items-center w-full bg-white rounded-full mt-7 px-[30px]" >
+            <div className="h-full flex items-center">
+                <Link href="/" className="">
+                    <Image width="57" height="27" src="/Logo.svg" alt="logo" />
                 </Link>
             </div>
 
@@ -61,18 +61,18 @@ export default function Header() {
             </nav>
 
             <div className="flex flex-row space-x-3">
-                <div className="background-contrast-for-icons">
+                <div className="background-contrast-for-icons bg-[#F5F5F5] cursor-pointer">
                     <Image
-                        width="25"
-                        height="25"
+                        width="20"
+                        height="20"
                         src="/Bell_light.svg"
                         alt="notification"
                     />
                 </div>
 
-                <div className="background-contrast-for-icons">
+                <div className="background-contrast-for-icons bg-[#B591EF] cursor-pointer">
                     <Avatar>
-                        <AvatarImage src="/4159828.png" alt="avatar" />
+                        <AvatarImage src="/avatar.svg" alt="avatar" />
                         <AvatarFallback>Avatar</AvatarFallback>
                     </Avatar>
                 </div>

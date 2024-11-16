@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Head from "next/head";
 
 // export const metadata = {
 //   title: "Create Next App",
@@ -15,7 +16,7 @@ export default function RootLayout({ children }) {
                     attribute="class"
                     defaultTheme="light"
                     enableSystem
-                    
+
                 >
                     <div className="cont">
                         <div className="wrapper">

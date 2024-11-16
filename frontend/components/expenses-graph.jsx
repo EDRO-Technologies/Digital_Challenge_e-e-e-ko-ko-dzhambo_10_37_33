@@ -130,7 +130,7 @@ export default function Component({ data, mode = "week" }) {
     }
 
     return (
-        <div className="bg-white max-w-[284px] flex-grow rounded-2xl p-4">
+        <div className="bg-white max-w-[284px] h-[255px] w-full rounded-[32px]">
             <p className="font-medium text-[#686868] mt-0">Общие траты</p>
             <p className="text-2xl font-semibold mt-2">₽120,000</p>
             <p className="text-[#767676] mt-[3px]">+20% с прошлого дня</p>

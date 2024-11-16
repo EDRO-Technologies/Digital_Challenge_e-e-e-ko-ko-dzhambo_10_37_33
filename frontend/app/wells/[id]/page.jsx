@@ -33,44 +33,12 @@ export default function Page() {
 
     const layout = (
         <main>
-            <h1 className="text-5xl ml-[82px] font-semibold">Куст 2, Сургут</h1>
 
+            <h1 className="text-5xl ml-[82px] font-semibold">Куст 2, Сургут</h1>
             <div className="flex flex-row justify-between flex-grow mt-12">
                 {/* sidebar */}
                 <div className="flex flex-col justify-between">
                     <div className="bg-white px-2 py-4 rounded-full space-y-3">
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
                         <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
                             <Image
                                 src="/darhboard_alt.svg"
@@ -130,68 +98,60 @@ export default function Page() {
 
     return (
         <main>
-            <h1 className="text-5xl ml-[82px] font-semibold">Куст 2, Сургут</h1>
+            <div className="my-[35px] flex w-full justify-between pl-[82px]">
+                <h1 className="text-[42px] font-medium">Куст 2, Сургут</h1>
+                <div className="flex">
+                    <div className="max-w-[137px] w-full h-[36px] rounded-full border border-[#E3E2E7] flex items-center">
+                        <span className="font-medium text-xs text-black pl-[15px]">Показ: Неделя</span>
+                        <img src="/arrow_down.svg" alt="arrow" className="w-[12px] h-[12px] ml-[5px] mr-[10px] mt-[1px]" />
+                    </div>
+                    <div className="w-[190px] h-[36px] bg-white rounded-full mx-[8px] flex justify-center items-center">
+                        <span className="font-medium text-xs">Выбор подразделения</span>
+                        <img src="/arrow_down.svg" alt="arrow" className="w-[12px] h-[12px] ml-[5px] mt-[1px]" />
+                    </div>
+                    <div className="bg-white flex w-[156px] h-[36px] rounded-full items-center justify-center">
+                        <span className="font-medium text-xs">Выбор скважины</span>
+                        <img src="/arrow_down.svg" alt="arrow" className="w-[12px] h-[12px] ml-[5px] mt-[1px]" />
+                    </div>
+                </div>
+            </div>
 
-            <div className="flex flex-row justify-between flex-grow mt-12">
+            <div className="flex flex-row justify-between w-full h-full">
                 {/* sidebar */}
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col h-full justify-between max-h-[529px]">
                     <div className="bg-white px-2 py-4 rounded-full space-y-3">
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
+                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full cursor-pointer">
                             <Image
                                 src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
+                                width="21"
+                                height="21"
                                 alt="dh"
                             />
                         </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
+                        <div className="flex flex-row justify-center items-center w-10 h-10 cursor-pointer">
                             <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
-                                alt="dh"
-                            />
-                        </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full">
-                            <Image
-                                src="/darhboard_alt.svg"
-                                width="20"
-                                height="20"
+                                src="/navigation.svg"
+                                width="24"
+                                height="24"
                                 alt="dh"
                             />
                         </div>
                     </div>
 
                     <div className="bg-white px-2 py-3 rounded-full space-y-3">
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-white rounded-full">
+                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-white rounded-full cursor-pointer">
                             <Image
-                                src="/Setting_alt_line_light.svg"
-                                width="25"
-                                height="25"
+                                src="/setting_icon.svg"
+                                width="24"
+                                height="24"
                                 alt="dh"
                             />
                         </div>
-                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-white rounded-full">
+                        <div className="flex flex-row justify-center items-center w-10 h-10 bg-black rounded-full cursor-pointer">
                             <Image
-                                src="/Sign_out_circle_light.svg"
-                                width="25"
-                                height="25"
+                                src="/arrow_right.svg"
+                                width="18"
+                                height="0"
                                 alt="dh"
                             />
                         </div>
@@ -219,13 +179,13 @@ export default function Page() {
                         />
 
                         {/* дебит скважины */}
-                        <div className="bg-white flex-grow rounded-2xl"></div>
+                        <div className="bg-white max-w-[616px] w-full h-[255px] rounded-[32px]"></div>
                     </div>
 
-                    <div className="flex flex-col flex-grow max-h-[50%]"></div>
+
                 </div>
 
-                <div className="max-w-[282px] bg-white flex-grow rounded-2xl"></div>
+                <div className="max-w-[282px] h-[529px] bg-white w-full rounded-[32px]"></div>
             </div>
         </main>
     );
