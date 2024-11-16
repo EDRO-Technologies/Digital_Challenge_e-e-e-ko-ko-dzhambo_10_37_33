@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\source\\repos\\vangaapi\\vangaapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\source\\repos\\vangaapi\\vangaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\source\\repos\\vangaapi\\vangaapi\\neiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\neiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\source\\repos\\vangaapi\\vangaapi\\welldayhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\welldayhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\source\\repos\\vangaapi\\vangaapi\\controllers\\welldayhistoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\controllers\\welldayhistoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 233,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Neiro.cs",
+              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Neiro.cs",
+              "RelativeDocumentMoniker": "VangaApi\\Neiro.cs",
+              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Neiro.cs",
+              "RelativeToolTip": "VangaApi\\Neiro.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAcAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T16:26:16.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "VangaApi\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "VangaApi\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T16:24:15.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WellDayHistory.cs",
+              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\WellDayHistory.cs",
+              "RelativeDocumentMoniker": "VangaApi\\WellDayHistory.cs",
+              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\WellDayHistory.cs",
+              "RelativeToolTip": "VangaApi\\WellDayHistory.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAgwC8AAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T13:59:32.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WellDayHistoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Controllers\\WellDayHistoriesController.cs",
+              "RelativeDocumentMoniker": "VangaApi\\Controllers\\WellDayHistoriesController.cs",
+              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Controllers\\WellDayHistoriesController.cs",
+              "RelativeToolTip": "VangaApi\\Controllers\\WellDayHistoriesController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAIwBoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T13:57:42.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Program.cs",
+              "RelativeDocumentMoniker": "VangaApi\\Program.cs",
+              "ToolTip": "C:\\Users\\Andrey\\source\\repos\\VangaApi\\VangaApi\\Program.cs",
+              "RelativeToolTip": "VangaApi\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T13:52:09.798Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
