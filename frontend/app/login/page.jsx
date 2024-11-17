@@ -19,7 +19,7 @@ const page = () => {
                         </div>
                         <span className='font-medium text-[14px] mt-[13px]'>Пароль</span>
                         <div className='max-w-[294px] w-full h-[32px] border border-[#E3E2E7] rounded-[5px]'>
-                            <input placeholder='Введите свой пароль' className='w-full h-full text-[12px] indent-4'></input>
+                            <input type='password' placeholder='Введите свой пароль' className='w-full h-full text-[12px] indent-4'></input>
                         </div>
                         <a className='max-w-[294px] w-full h-[32px] bg-black flex justify-center items-center text-white rounded-[5px] text-[12px] font-medium mt-[13px]' href='/wells/1111' >
                             Войти

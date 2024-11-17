@@ -23,6 +23,7 @@ const chartConfig = {
 // mode is week, month, year
 export default function EeConsumeGraph({ data, mode = "week" }) {
     const [preparingData, setPreparingData] = useState(data);
+    
 
     useEffect(() => {
         if (mode === "year") {

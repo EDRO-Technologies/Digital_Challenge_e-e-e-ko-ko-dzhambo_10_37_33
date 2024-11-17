@@ -107,8 +107,18 @@ export default function DebitGraphs({ data, prediction, mode }) {
 
             {isPredication ? (
                 <ChartContainer className="h-[75%]" config={chartConfig}>
-                    <AreaChart accessibilityLayer data={preparingData}>
-                        <XAxis dataKey="date_fact" />
+                    <AreaChart accessibilityLayer data={preparingData.slice(3)}>
+                        <XAxis
+                            dataKey="date_fact"
+                            tickFormatter={(value) =>{
+                                let time = {};
+                                time[mode] = 1;
+                                
+                                return DateTime.fromISO(value)
+                                    .plus(time)
+                                    .toFormat("yyyy.LL.dd")
+                            }}
+                        />
                         <Area
                             dataKey="debit"
                             type="natural"
