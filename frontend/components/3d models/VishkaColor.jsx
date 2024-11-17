@@ -24,7 +24,7 @@ function Model(props) {
 
   // Загружаем текстуры
   const textureMap = useLoader(TextureLoader, '/texture.png'); // Укажите путь к вашей текстуре
-console.log(materials)
+
   useEffect(() => {
     if (materials && textureMap) {
       materials[""].map = textureMap; // Замените 'MaterialName' на имя вашего материала
