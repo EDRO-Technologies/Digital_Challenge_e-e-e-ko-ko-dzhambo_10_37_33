@@ -9,11 +9,11 @@ html {
 }
 
 .cont {
-  @apply flex justify-center w-full bg-[#F5F6F7];
+  @apply flex justify-center w-full bg-[#F5F6F7] overscroll-none;
 }
 
 .wrapper {
-  @apply max-w-[1312px] w-full flex flex-col min-h-[100vh];
+  @apply max-w-[1312px] w-full flex flex-col max-h-[100vh];
 }
 
 .background-contrast-for-icons {
