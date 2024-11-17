@@ -133,7 +133,7 @@ export default function EeConsumeGraph({ data, mode = "week" }) {
     return (
         // <div className="bg-white h-[255px] w-full rounded-[32px] flex flex-col">
         <ChartContainer
-            className="w-full justify-self-center"
+            className="h-[80%] justify-self-center"
             config={chartConfig}
         >
             <BarChart accessibilityLayer data={preparingData}>

@@ -20,8 +20,7 @@ const chartConfig = {
         label: "Затраты",
         color: "#B591EF",
     },
-}
-    ;
+};
 const chartPredConfig = {
     date: {
         label: "Дата",
@@ -35,7 +34,7 @@ const chartPredConfig = {
 
 export default function DebitGraphs({ data, prediction, mode }) {
     const [isPredication, setIsPrediction] = useState(false);
-    const [preparingData, setPreparingData] = useState([])
+    const [preparingData, setPreparingData] = useState([]);
 
     useEffect(() => {
         if (mode === "year") {
@@ -107,15 +106,15 @@ export default function DebitGraphs({ data, prediction, mode }) {
             </div>
 
             {isPredication ? (
-                <ChartContainer className="h-[75%]" config={chartPredConfig}>
-                    <AreaChart accessibilityLayer data={data}>
-                        <XAxis dataKey="date" />
+                <ChartContainer className="h-[75%]" config={chartConfig}>
+                    <AreaChart accessibilityLayer data={preparingData}>
+                        <XAxis dataKey="date_fact" />
                         <Area
-                            dataKey="predictedDebit"
+                            dataKey="debit"
                             type="natural"
-                            fill="var(--color-predictedDebit)"
+                            fill="var(--color-debit)"
                             fillOpacity={0.4}
-                            stroke="var(--color-predictedDebit)"
+                            stroke="var(--color-debit)"
                         />
                         <YAxis
                             hide={false}
@@ -128,13 +127,13 @@ export default function DebitGraphs({ data, prediction, mode }) {
                 <ChartContainer className="h-[75%]" config={chartConfig}>
                     <AreaChart accessibilityLayer data={preparingData}>
                         <XAxis dataKey="date_fact" />
-                        <Area 
+                        <Area
                             dataKey="debit"
                             type="natural"
                             fill="var(--color-debit)"
                             fillOpacity={0.4}
                             stroke="var(--color-debit)"
-                         />
+                        />
                         <YAxis
                             hide={false}
                             domain={["dataMin - 5", "dataMax + 5"]}

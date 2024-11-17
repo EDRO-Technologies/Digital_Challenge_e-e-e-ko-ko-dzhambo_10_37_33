@@ -11,11 +11,11 @@ import DebitGraphs from "@/components/debit-graphs";
 import Header from "@/components/Header";
 import axios from "axios";
 
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
+import * as React from "react";
+import { Check, ChevronsUpDown } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
     Command,
     CommandEmpty,
@@ -23,12 +23,12 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import EeConsumeGraph from "@/components/eeConsume-graph";
 
 const mods = [
@@ -69,31 +69,35 @@ export default function Page() {
         })();
 
         (async () => {
-            const res = await axios.post(process.env.NEXT_PUBLIC_AI_URL, JSON.stringify({
-                WellId: params.id,
-                AttributeId: 1,
-            }));
+            const res = await axios.post(
+                process.env.NEXT_PUBLIC_AI_URL,
+                JSON.stringify({
+                    WellId: params.id,
+                    AttributeId: 1,
+                }),
+            );
 
             const data = await res.data;
-        
 
             setPredictionDebit(data);
         })();
 
         (async () => {
-            const res = await axios.post(process.env.NEXT_PUBLIC_AI_URL, JSON.stringify({
-                WellId: params.id,
-                AttributeId: 2,
-            }));
+            const res = await axios.post(
+                process.env.NEXT_PUBLIC_AI_URL,
+                JSON.stringify({
+                    WellId: params.id,
+                    AttributeId: 2,
+                }),
+            );
 
-       
+            const data = await res.data;
 
             setEeConsumePrediction(data);
         })();
     }, []);
 
-
-    function getWellByMode() {
+    function getWellByMode(isPredict = false) {
         let time;
 
         switch (mode) {
@@ -106,6 +110,16 @@ export default function Page() {
             case "year":
                 time = { years: 1 };
                 break;
+        }
+
+        if (isPredict) {
+            return well?.wellDayHistory.filter(
+                (elem) =>
+                    (DateTime.fromISO(elem.date_fact).toMillis() <
+                        DateTime.now().plus(time).toMillis()) &
+                    (DateTime.fromISO(elem.date_fact).toMillis() >
+                        DateTime.now().toMillis()),
+            );
         }
 
         return well?.wellDayHistory.filter(
@@ -134,7 +148,9 @@ export default function Page() {
                                         className="w-[140px] justify-between"
                                     >
                                         {mode
-                                            ? mods.find((mod) => mod.value === mode)?.label
+                                            ? mods.find(
+                                                  (mod) => mod.value === mode,
+                                              )?.label
                                             : "Выберите режим"}
                                         <img
                                             src="/arrow_down.svg"
@@ -146,21 +162,30 @@ export default function Page() {
                                 <PopoverContent className="w-[160px] p-0">
                                     <Command>
                                         <CommandList>
-                                            <CommandEmpty>Не найдено</CommandEmpty>
+                                            <CommandEmpty>
+                                                Не найдено
+                                            </CommandEmpty>
                                             <CommandGroup>
                                                 {mods.map((mod) => (
                                                     <CommandItem
                                                         key={mod.value}
                                                         value={mod.value}
-                                                        onSelect={(currentValue) => {
-                                                            setMode(currentValue)
-                                                            setOpen(false)
+                                                        onSelect={(
+                                                            currentValue,
+                                                        ) => {
+                                                            setMode(
+                                                                currentValue,
+                                                            );
+                                                            setOpen(false);
                                                         }}
                                                     >
                                                         <Check
                                                             className={cn(
                                                                 "mr-2 h-4 w-4",
-                                                                mode === mod.value ? "opacity-100" : "opacity-0"
+                                                                mode ===
+                                                                    mod.value
+                                                                    ? "opacity-100"
+                                                                    : "opacity-0",
                                                             )}
                                                         />
                                                         {mod.label}
@@ -170,7 +195,6 @@ export default function Page() {
                                         </CommandList>
                                     </Command>
                                 </PopoverContent>
-
                             </Popover>
                         </div>
                         <div className="w-[190px] h-[36px] bg-white rounded-full mx-[8px] flex justify-center items-center">
@@ -247,7 +271,7 @@ export default function Page() {
                             <DebitGraphs
                                 data={getWellByMode()}
                                 mode={mode}
-                                prediction={predictionDebit}
+                                prediction={getWellByMode(true)}
                             />
                         </div>
 
@@ -283,10 +307,12 @@ export default function Page() {
                                             Прогноз
                                         </span>
                                     </div>
-
-
                                 </div>
-                                <EeConsumeGraph data={getWellByMode()} mode={mode} prediction={eeConsumePrediction} />
+                                <EeConsumeGraph
+                                    data={getWellByMode()}
+                                    mode={mode}
+                                    prediction={getWellByMode(true)}
+                                />
                             </div>
                             <div className="flex flex-col h-full justify-between">
                                 <div className="flex">
@@ -295,7 +321,11 @@ export default function Page() {
                                             Наработка насоса
                                         </span>
                                         <span className="text-[36px] font-medium ml-[17px] mt-[10px]">
-                                            {getWellByMode()?.[0].pump_operating}ч
+                                            {
+                                                getWellByMode()?.[0]
+                                                    .pump_operating
+                                            }
+                                            ч
                                         </span>
                                     </div>
                                     <div className="w-[140px] h-[135px] bg-[#ffffff] rounded-[32px] ml-[12px] flex flex-col">
