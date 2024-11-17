@@ -9,12 +9,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const navs = [
     {
-        title: "Регистрация",
+        title: "Сотрудники",
         href: "/registration",
         props: [],
     },
     {
-        title: "Календарь",
+        title: "Скважины",
         href: "/calendar",
         props: [],
     },
@@ -24,7 +24,7 @@ const navs = [
         props: [],
     },
     {
-        title: "Информация",
+        title: "Карты",
         href: "/information",
         props: [],
     },
@@ -37,7 +37,9 @@ export default function Header() {
         <div className="flex flex-row justify-between h-[78px] items-center w-full bg-white rounded-full mt-7 px-[30px]" >
             <div className="h-full flex items-center">
                 <Link href="/" className="">
-                    <Image width="57" height="27" src="/Logo.svg" alt="logo" />
+                    {/* <Image width="57" height="27" src="/Logo.svg" alt="logo" /> */}
+                    <span className="font-medium text-[16px]">wells</span>
+                    <span className="font-medium text-[16px] text-[#B591EF]">Analizer</span>
                 </Link>
             </div>
 

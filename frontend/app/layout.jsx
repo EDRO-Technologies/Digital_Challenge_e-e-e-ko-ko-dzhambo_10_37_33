@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
                 >
                     <div className="cont">
                         <div className="wrapper">
-                            <Header />
                             {children}
                         </div>
                     </div>

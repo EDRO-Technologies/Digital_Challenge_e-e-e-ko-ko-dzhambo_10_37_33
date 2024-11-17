@@ -133,11 +133,9 @@ export default function Component({ data, mode = "week" }) {
 
     return (
         <div className="bg-white max-w-[284px] h-[255px] w-full rounded-[32px] flex flex-col">
-            <p className="font-medium text-[#686868] mt-[24px] ml-[24px] text-[16px]">
-                Общие траты
-            </p>
-            <p className="text-2xl font-semibold mt-2">₽120,000</p>
-            <p className="text-[#767676] mt-[3px]">+20% с прошлого дня</p>
+            <p className="font-medium text-[#686868] mt-[24px] ml-[24px] text-[16px]">Общие траты</p>
+            <p className="text-2xl font-semibold mt-2 ml-[24px]">2,4 у.e</p>
+            <p className="text-[#767676] mt-[3px] ml-[24px]">+20% с прошлого дня</p>
 
             <ChartContainer
                 className="w-[90%] self-center"

@@ -13,7 +13,7 @@ html {
 }
 
 .wrapper {
-  @apply max-w-[1312px] w-full flex flex-col max-h-[100vh];
+  @apply max-w-[1312px] w-full flex flex-col
 }
 
 .background-contrast-for-icons {

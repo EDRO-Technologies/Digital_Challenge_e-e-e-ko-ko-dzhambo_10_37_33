@@ -8,6 +8,7 @@ import { useGraph } from '@react-three/fiber'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { SkeletonUtils } from 'three-stdlib'
 
+
 function Model(props) {
   const group = React.useRef()
   const { scene, animations } = useGLTF('/models/vishka-animate.glb')

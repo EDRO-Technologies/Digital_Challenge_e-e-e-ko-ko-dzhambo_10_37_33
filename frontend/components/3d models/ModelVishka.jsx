@@ -4,7 +4,7 @@ import ModelView from './ModelView'
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 
-const ModelVishka = () => {
+const ModelVishka = ({}) => {
     const modelRef = useRef();
     return (
         <div className='w-full h-[75vh] overflow-hidden'>
