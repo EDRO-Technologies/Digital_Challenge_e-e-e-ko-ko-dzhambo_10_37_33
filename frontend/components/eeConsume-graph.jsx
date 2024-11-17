@@ -1,6 +1,6 @@
 "use client";
 
-import { Line, LineChart, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, Line, LineChart, XAxis, YAxis } from "recharts";
 import {
     ChartContainer,
     ChartTooltip,
@@ -14,14 +14,14 @@ const chartConfig = {
         label: "Дата",
         color: "hsl(var(--chart-1))",
     },
-    expenses: {
-        label: "Затраты",
+    ee_consume: {
+        label: "КвтЧ",
         color: "#B591EF",
     },
 };
 
 // mode is week, month, year
-export default function Component({ data, mode = "week" }) {
+export default function EeConsumeGraph({ data, mode = "week" }) {
     const [preparingData, setPreparingData] = useState(data);
 
     useEffect(() => {
@@ -131,39 +131,38 @@ export default function Component({ data, mode = "week" }) {
     }
     const lastExpencing = preparingData?.[0].expenses
     return (
-        <div className="bg-white max-w-[284px] h-[255px] w-full rounded-[32px] flex flex-col">
-            <p className="font-medium text-[#686868] mt-[24px] ml-[24px] text-[16px]">Общие траты</p>
-            <p className="text-2xl font-semibold mt-2 ml-[24px]">{String(lastExpencing)?.slice(0 , 4)}</p>
-            <p className="text-[#767676] mt-[3px] ml-[24px]">+20% с прошлого дня</p>
-
-            <ChartContainer
-                className="w-[90%] self-center"
-                config={chartConfig}
-            >
-                <LineChart accessibilityLayer data={preparingData}>
-                    <XAxis {...XAxisProps()} />
-                    <YAxis
-                        hide={true}
-                        tickLine={false}
-                        axisLine={false}
-                        tick={false}
-                        domain={["dataMin - 0.1", "dataMax + 0.1"]}
-                    />
-                    <ChartTooltip
-                        cursor={false}
-                        content={
-                            <ChartTooltipContent hideLabel indicator="line" />
-                        }
-                    />
-                    <Line
-                        dataKey="expenses"
-                        type="natural"
-                        fill="var(--color-expenses)"
-                        fillOpacity={0.4}
-                        stroke="var(--color-expenses)"
-                    />
-                </LineChart>
-            </ChartContainer>
-        </div>
+        // <div className="bg-white h-[255px] w-full rounded-[32px] flex flex-col">
+        <ChartContainer
+            className="w-full justify-self-center"
+            config={chartConfig}
+        >
+            <BarChart accessibilityLayer data={preparingData}>
+                <XAxis {...XAxisProps()} />
+                <YAxis
+                    hide={true}
+                    tickLine={false}
+                    axisLine={false}
+                    tick={false}
+                    domain={["dataMin - 0.1", "dataMax + 0.1"]}
+                />
+                <ChartTooltip
+                    cursor={false}
+                    content={
+                        <ChartTooltipContent hideLabel indicator="line" />
+                    }
+                />
+                <Bar
+                    dataKey="ee_consume"
+                    type="natural"
+                    fill="var(--color-ee_consume)"
+                    fillOpacity={0.4}
+                    
+                    stroke="var(--color-ee_consume)"
+                    radius={[15, 15, 15, 15]}
+                    width={15}
+                />
+            </BarChart>
+        </ChartContainer>
+        // </div>
     );
 }

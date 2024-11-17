@@ -29,6 +29,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
+import EeConsumeGraph from "@/components/eeConsume-graph";
 
 const mods = [
     {
@@ -51,7 +52,8 @@ export default function Page() {
     const [well, setWell] = useState(null);
     const [predictionDebit, setPredictionDebit] = useState(null);
     const [mode, setMode] = useState("week");
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(false);
+    const [eeConsumePrediction, setEeConsumePrediction] = useState(null);
 
     useEffect(() => {
         (async () => {
@@ -73,11 +75,23 @@ export default function Page() {
             }));
 
             const data = await res.data;
-            console.log(data)
+        
 
             setPredictionDebit(data);
         })();
+
+        (async () => {
+            const res = await axios.post(process.env.NEXT_PUBLIC_AI_URL, JSON.stringify({
+                WellId: params.id,
+                AttributeId: 2,
+            }));
+
+       
+
+            setEeConsumePrediction(data);
+        })();
     }, []);
+
 
     function getWellByMode() {
         let time;
@@ -114,10 +128,10 @@ export default function Page() {
                             <Popover open={open} onOpenChange={setOpen}>
                                 <PopoverTrigger asChild>
                                     <Button
-                                        variant="outline"
+                                        variant="btnMode"
                                         role="combobox"
                                         aria-expanded={open}
-                                        className="w-[160px] justify-between"
+                                        className="w-[140px] justify-between"
                                     >
                                         {mode
                                             ? mods.find((mod) => mod.value === mode)?.label
@@ -129,7 +143,7 @@ export default function Page() {
                                         />
                                     </Button>
                                 </PopoverTrigger>
-                                <PopoverContent className="w-[200px] p-0">
+                                <PopoverContent className="w-[160px] p-0">
                                     <Command>
                                         <CommandList>
                                             <CommandEmpty>Не найдено</CommandEmpty>
@@ -139,7 +153,7 @@ export default function Page() {
                                                         key={mod.value}
                                                         value={mod.value}
                                                         onSelect={(currentValue) => {
-                                                            setMode(currentValue === mode ? "" : currentValue)
+                                                            setMode(currentValue)
                                                             setOpen(false)
                                                         }}
                                                     >
@@ -248,7 +262,7 @@ export default function Page() {
                                                 alt="diagram"
                                             />
                                         </div>
-                                        <div className="mt-[27px] flex">
+                                        <div className="mt-[27px] flex ">
                                             <span className="font-medium text-[16px] ml-[10px]">
                                                 Электропотребление
                                             </span>
@@ -269,7 +283,10 @@ export default function Page() {
                                             Прогноз
                                         </span>
                                     </div>
+
+
                                 </div>
+                                <EeConsumeGraph data={getWellByMode()} mode={mode} prediction={eeConsumePrediction} />
                             </div>
                             <div className="flex flex-col h-full justify-between">
                                 <div className="flex">
@@ -278,7 +295,7 @@ export default function Page() {
                                             Наработка насоса
                                         </span>
                                         <span className="text-[36px] font-medium ml-[17px] mt-[10px]">
-                                            20ч
+                                            {getWellByMode()?.[0].pump_operating}ч
                                         </span>
                                     </div>
                                     <div className="w-[140px] h-[135px] bg-[#ffffff] rounded-[32px] ml-[12px] flex flex-col">

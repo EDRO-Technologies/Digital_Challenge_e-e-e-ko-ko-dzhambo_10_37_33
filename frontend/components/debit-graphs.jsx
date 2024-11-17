@@ -14,17 +14,28 @@ import clsx from "clsx";
 const chartConfig = {
     date_fact: {
         label: "Дата",
-        color: "hsl(var(--chart-1))",
+        color: "#B591EF",
     },
     debit: {
         label: "Затраты",
         color: "#B591EF",
     },
+}
+    ;
+const chartPredConfig = {
+    date: {
+        label: "Дата",
+        color: "#B591EF",
+    },
+    predictedDebit: {
+        label: "Затраты",
+        color: "#B591EF",
+    },
 };
 
-export default function DebitGraphs({ data, prediction , mode }) {
+export default function DebitGraphs({ data, prediction, mode }) {
     const [isPredication, setIsPrediction] = useState(false);
-    const [preparingData , setPreparingData] = useState([])
+    const [preparingData, setPreparingData] = useState([])
 
     useEffect(() => {
         if (mode === "year") {
@@ -96,10 +107,16 @@ export default function DebitGraphs({ data, prediction , mode }) {
             </div>
 
             {isPredication ? (
-                <ChartContainer className="h-[75%]" config={chartConfig}>
+                <ChartContainer className="h-[75%]" config={chartPredConfig}>
                     <AreaChart accessibilityLayer data={data}>
                         <XAxis dataKey="date" />
-                        <Area dataKey="predictedDebit" />
+                        <Area
+                            dataKey="predictedDebit"
+                            type="natural"
+                            fill="var(--color-predictedDebit)"
+                            fillOpacity={0.4}
+                            stroke="var(--color-predictedDebit)"
+                        />
                         <YAxis
                             hide={false}
                             domain={["dataMin - 5", "dataMax + 5"]}
@@ -111,7 +128,13 @@ export default function DebitGraphs({ data, prediction , mode }) {
                 <ChartContainer className="h-[75%]" config={chartConfig}>
                     <AreaChart accessibilityLayer data={preparingData}>
                         <XAxis dataKey="date_fact" />
-                        <Area dataKey="debit" />
+                        <Area 
+                            dataKey="debit"
+                            type="natural"
+                            fill="var(--color-debit)"
+                            fillOpacity={0.4}
+                            stroke="var(--color-debit)"
+                         />
                         <YAxis
                             hide={false}
                             domain={["dataMin - 5", "dataMax + 5"]}
