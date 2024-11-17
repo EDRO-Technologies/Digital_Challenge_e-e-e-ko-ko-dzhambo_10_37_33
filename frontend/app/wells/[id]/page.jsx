@@ -6,6 +6,7 @@ import Image from "next/image";
 import ExpensesGraph from "@/components/expenses-graph";
 import { useEffect, useState } from "react";
 import { DateTime } from "luxon";
+import ModelVishka from "@/components/3d models/ModelVishka";
 
 export default function Page() {
     const params = useParams();
@@ -177,6 +178,7 @@ export default function Page() {
                 </div>
 
                 <div className="max-w-[282px] h-[529px] bg-white w-full rounded-[32px]">
+                    <ModelVishka />
                 </div>
             </div>
         </main>
