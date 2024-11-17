@@ -4,12 +4,14 @@ using Supabase.Postgrest.Attributes;
 
 namespace VangaApi
 {
+    
+
 
     [Table("well_day_histories")]
     [Obsolete]
     public class WellDayHistorySup : Supabase.SupabaseModel
     {
-        [PrimaryKey("well_id")]
+        [PrimaryKey("well")]
         public int Well { get; set; }
         [JsonPropertyName("date_fact")]
         [Column("date_fact")]
@@ -27,9 +29,6 @@ namespace VangaApi
         [Column("pump_operating")]
         public float PumpOperating { get; set; }
 
-        public float DayOfYear;
-        public float Month;
-        public float DayOfWeek;
     }
     public class WellDayHistory
     {

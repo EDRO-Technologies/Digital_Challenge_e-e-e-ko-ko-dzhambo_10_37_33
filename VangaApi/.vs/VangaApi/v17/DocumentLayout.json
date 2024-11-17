@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\desktop\\hakaton\\digital_challenge_e-e-e-ko-ko-dzhambo_10_37_33\\vangaapi\\vangaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\desktop\\hakaton\\digital_challenge_e-e-e-ko-ko-dzhambo_10_37_33\\vangaapi\\vangaapi\\controllers\\welldayhistoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\controllers\\welldayhistoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\desktop\\hakaton\\digital_challenge_e-e-e-ko-ko-dzhambo_10_37_33\\vangaapi\\vangaapi\\neiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\neiro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\desktop\\hakaton\\digital_challenge_e-e-e-ko-ko-dzhambo_10_37_33\\vangaapi\\vangaapi\\controllers\\welldayhistoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\controllers\\welldayhistoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\desktop\\hakaton\\digital_challenge_e-e-e-ko-ko-dzhambo_10_37_33\\vangaapi\\vangaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\desktop\\hakaton\\digital_challenge_e-e-e-ko-ko-dzhambo_10_37_33\\vangaapi\\vangaapi\\errorlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\errorlogger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|c:\\users\\andrey\\desktop\\hakaton\\digital_challenge_e-e-e-ko-ko-dzhambo_10_37_33\\vangaapi\\vangaapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C0ECD1C8-20AB-4470-9662-A2D119A97485}|VangaApi\\VangaApi.csproj|solutionrelative:vangaapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +30,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 264,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ErrorLogger.cs",
+              "DocumentMoniker": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\ErrorLogger.cs",
+              "RelativeDocumentMoniker": "VangaApi\\ErrorLogger.cs",
+              "ToolTip": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\ErrorLogger.cs",
+              "RelativeToolTip": "VangaApi\\ErrorLogger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-16T21:17:12.813Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "VangaApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "VangaApi\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABoAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-16T21:14:22.295Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -32,33 +64,33 @@
               "RelativeDocumentMoniker": "VangaApi\\Neiro.cs",
               "ToolTip": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\Neiro.cs",
               "RelativeToolTip": "VangaApi\\Neiro.cs",
-              "ViewState": "AQIAAAIBAAAAAAAAAAAAAFUAAABRAAAA",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAewIIAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T16:26:16.521Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "WellDayHistoriesController.cs",
               "DocumentMoniker": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\Controllers\\WellDayHistoriesController.cs",
               "RelativeDocumentMoniker": "VangaApi\\Controllers\\WellDayHistoriesController.cs",
               "ToolTip": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\Controllers\\WellDayHistoriesController.cs",
               "RelativeToolTip": "VangaApi\\Controllers\\WellDayHistoriesController.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAgwBoAAABxAAAA",
+              "ViewState": "AQIAABMAAAAAAAAAAADwvx4AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T13:57:42.98Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\Program.cs",
               "RelativeDocumentMoniker": "VangaApi\\Program.cs",
               "ToolTip": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\Program.cs",
               "RelativeToolTip": "VangaApi\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAIwD4AAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-16T13:52:09.798Z",
               "EditorCaption": ""

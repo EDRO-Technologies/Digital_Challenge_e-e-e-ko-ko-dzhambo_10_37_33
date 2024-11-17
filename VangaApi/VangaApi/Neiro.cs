@@ -2,6 +2,7 @@
 using Microsoft.ML.Data;
 using OfficeOpenXml;
 using System.ComponentModel;
+using System.Reflection;
 using static Microsoft.ML.ForecastingCatalog;
 
 namespace VangaApi
@@ -14,137 +15,94 @@ namespace VangaApi
         public PredictionEngine<WellDayHistory, WellPredictionResult> predictionEngineExpenses;
         public PredictionEngine<WellDayHistory, WellPredictionResult> predictionEnginePumpOperating;
 
-        public Single avgEEConsume;
-        public Single avgExpenses;
-        public Single avgPumpOperating;
-        public Single wellIddd;
         public PredictionEngine<WellDayHistory, WellPredictionResult> CreatePredictionEngine(IDataView data, string atribut)
         {
-            var pipeline = mlContext.Transforms.CopyColumns("Label", atribut)
-                .Append(mlContext.Transforms.Conversion.ConvertType("Well", outputKind: Microsoft.ML.Data.DataKind.Single))
-            .Append(mlContext.Transforms.Concatenate("Features", new[] { "DayOfYear", "Month", "DayOfWeek", "Well" }))
-            .Append(mlContext.Transforms.NormalizeMinMax("Features", "Features"))
-            .Append(mlContext.Regression.Trainers.OnlineGradientDescent(labelColumnName: "Label", featureColumnName: "Features"));
-            var model = pipeline.Fit(data);
-            var predictions = model.Transform(data);
-            return mlContext.Model.CreatePredictionEngine<WellDayHistory, WellPredictionResult>(model);
-        }
-        public List<WellPredictionResultForSerialize> ForecastDataForAllData(int wellId, int atributeId)
-        {
-            List<WellPredictionResultForSerialize> forecasts = [];
-            wellIddd = wellId;
-            for (int i = 1; i <= 365; i++)
+            try
             {
-                DateTime forecastDate = DateTime.Now.AddDays(i);
-                var futureData = new WellDayHistory
-                {
-                    Well = wellId, // ID скважины*/
-                    DateFact = forecastDate, // Будущая дата
-                    DayOfYear = forecastDate.DayOfYear,
-                    DayOfWeek = (float)forecastDate.DayOfWeek,
-                    Month = forecastDate.Month,
-
-                };
-                WellPredictionResult prediction;
+                var pipeline = mlContext.Transforms.CopyColumns("Label", atribut)
+                    .Append(mlContext.Transforms.Categorical.OneHotEncoding("Well"))
+                    .Append(mlContext.Transforms.Concatenate("Features", new[] { "DayOfYear", "Month", "DayOfWeek", "Well" }))
+                    .Append(mlContext.Transforms.NormalizeMinMax("Features", "Features"))
+                    .Append(mlContext.Regression.Trainers.OnlineGradientDescent(labelColumnName: "Label", featureColumnName: "Features"));
+                var model = pipeline.Fit(data);
+                var predictions = model.Transform(data);
+                return mlContext.Model.CreatePredictionEngine<WellDayHistory, WellPredictionResult>(model);
+            }
+            catch (Exception e)
+            {
+                Program.er.LogMessage("CreatePredictionEngine", e);
+                return null;
+            }
+            
+        }
+        
+        public List<WellPredictionResultForSerialize> ForecastDataForFilteredData(List<WellDayHistory> wellData, int wellId, int atributeId)
+        {
+            try
+            {
+                /*IDataView data = mlContext.Data.LoadFromEnumerable(wellData);
                 if (atributeId == 1)
                 {
-                    prediction = predictionEngineDebit.Predict(futureData);
+                    predictionEngineDebit = CreatePredictionEngine(data, "Debit");
                 }
                 else if (atributeId == 2)
                 {
-                    prediction = predictionEngineEEConsume.Predict(futureData);
+                    predictionEngineEEConsume = CreatePredictionEngine(data, "EEConsume");
                 }
                 else if (atributeId == 3)
                 {
-                    prediction = predictionEngineExpenses.Predict(futureData);
+                    predictionEngineExpenses = CreatePredictionEngine(data, "Expenses");
                 }
                 else
                 {
-                    prediction = predictionEnginePumpOperating.Predict(futureData);
-                }
-                forecasts.Add(new WellPredictionResultForSerialize
+                    predictionEnginePumpOperating = CreatePredictionEngine(data, "PumpOperating");
+                }*/
+
+                List<WellPredictionResultForSerialize> forecasts = [];
+                for (int i = 1; i <= 365; i++)
                 {
-                    PredictedDebit = prediction.PredictedValue,
-                    Date = futureData.DateFact
-                });
-                Console.WriteLine($"Дата {futureData.DateFact:yyyy-MM-dd}: {prediction.PredictedValue} м³/сутки");
+                    DateTime forecastDate = DateTime.Now.AddDays(i);
+                    var futureData = new WellDayHistory
+                    {
+                        Well = wellId, // ID скважины*/
+                        DateFact = forecastDate, // Будущая дата
+                        DayOfYear = forecastDate.DayOfYear,
+                        DayOfWeek = (float)forecastDate.DayOfWeek,
+                        Month = forecastDate.Month,
+
+                    };
+                    WellPredictionResult prediction;
+                    if (atributeId == 1)
+                    {
+                        prediction = predictionEngineDebit.Predict(futureData);
+                    }
+                    else if (atributeId == 2)
+                    {
+                        prediction = predictionEngineEEConsume.Predict(futureData);
+                    }
+                    else if (atributeId == 3)
+                    {
+                        prediction = predictionEngineExpenses.Predict(futureData);
+                    }
+                    else
+                    {
+                        prediction = predictionEnginePumpOperating.Predict(futureData);
+                    }
+                    forecasts.Add(new WellPredictionResultForSerialize
+                    {
+                        PredictedDebit = prediction.PredictedValue,
+                        Date = futureData.DateFact
+                    });
+                    Console.WriteLine($"Дата {futureData.DateFact:yyyy-MM-dd}: {prediction.PredictedValue} м³/сутки");
+                }
+                return forecasts;
             }
-            return forecasts;
-        }
-        public PredictionEngine<WellDayHistory, WellPredictionResult> CreatePredictionEngineFiltered(IDataView data, int wellId, string atribut)
-        {
-            var filteredData = mlContext.Data.FilterRowsByColumn(data, nameof(WellDayHistory.Well), wellId, wellId);
-            var pipeline = mlContext.Transforms.CopyColumns("Label", atribut)
-                .Append(mlContext.Transforms.Conversion.ConvertType("Well", outputKind: Microsoft.ML.Data.DataKind.Single))
-            .Append(mlContext.Transforms.Concatenate("Features", new[] { "DayOfYear", "Month", "DayOfWeek", "Well" }))
-            .Append(mlContext.Transforms.NormalizeMinMax("Features", "Features"))
-            .Append(mlContext.Regression.Trainers.OnlineGradientDescent(labelColumnName: "Label", featureColumnName: "Features"));
-            var model = pipeline.Fit(filteredData);
-            var predictions = model.Transform(filteredData);
-            return mlContext.Model.CreatePredictionEngine<WellDayHistory, WellPredictionResult>(model);
-        }
-        public List<WellPredictionResultForSerialize> ForecastDataForFilteredData(List<WellDayHistorySup> wellData, int wellId, int atributeId)
-        {
-            List<WellDayHistory> wellDataNew = [];
-            foreach (var edata in wellData)
+            catch (Exception e)
             {
-                wellDataNew.Add(new WellDayHistory
-                {
-                    Well = edata.Well,
-                    DateFact = edata.DateFact,
-                    Debit = edata.Debit,
-                    EEConsume = edata.EEConsume,
-                    Expenses = edata.Expenses,
-                    DayOfYear = edata.DateFact.DayOfYear,
-                    Month = edata.DateFact.Month,
-                    DayOfWeek = (float)edata.DateFact.DayOfWeek
-                });
+                Program.er.LogMessage("ForecastDataForFilteredData", e);
+                return [];
             }
-            IDataView data = mlContext.Data.LoadFromEnumerable(wellDataNew);
 
-            predictionEngineDebit = CreatePredictionEngine(data, "Debit");
-            predictionEngineEEConsume = CreatePredictionEngine(data, "EEConsume");
-            predictionEngineExpenses = CreatePredictionEngine(data, "Expenses");
-            predictionEnginePumpOperating = CreatePredictionEngine(data, "PumpOperating");
-
-            List<WellPredictionResultForSerialize> forecasts = [];
-            for (int i = 1; i <= 365; i++)
-            {
-                DateTime forecastDate = DateTime.Now.AddDays(i);
-                var futureData = new WellDayHistory
-                {
-                    Well = wellId, // ID скважины*/
-                    DateFact = forecastDate, // Будущая дата
-                    DayOfYear = forecastDate.DayOfYear,
-                    DayOfWeek = (float)forecastDate.DayOfWeek,
-                    Month = forecastDate.Month,
-
-                };
-                WellPredictionResult prediction;
-                if (atributeId == 1)
-                {
-                    prediction = predictionEngineDebit.Predict(futureData);
-                }
-                else if (atributeId == 2)
-                {
-                    prediction = predictionEngineEEConsume.Predict(futureData);
-                }
-                else if (atributeId == 3)
-                {
-                    prediction = predictionEngineExpenses.Predict(futureData);
-                }
-                else
-                {
-                    prediction = predictionEnginePumpOperating.Predict(futureData);
-                }
-                forecasts.Add(new WellPredictionResultForSerialize
-                {
-                    PredictedDebit = prediction.PredictedValue,
-                    Date = futureData.DateFact
-                });
-                Console.WriteLine($"Дата {futureData.DateFact:yyyy-MM-dd}: {prediction.PredictedValue} м³/сутки");
-            }
-            return forecasts;
         }
 
         public Neiro()
@@ -157,20 +115,44 @@ namespace VangaApi
                 edata.Month = edata.DateFact.Month;
                 edata.DayOfWeek = (float)edata.DateFact.DayOfWeek;
             }
-            /*avgEEConsume = wellData.Average(d => d.EEConsume);
-            avgExpenses = wellData.Average(d => d.Expenses);
-            avgPumpOperating = wellData.Average(d => d.PumpOperating);*/
             IDataView data = mlContext.Data.LoadFromEnumerable(wellData);
 
             predictionEngineDebit = CreatePredictionEngine(data, "Debit");
             predictionEngineEEConsume = CreatePredictionEngine(data, "EEConsume");
             predictionEngineExpenses = CreatePredictionEngine(data, "Expenses");
             predictionEnginePumpOperating = CreatePredictionEngine(data, "PumpOperating");
-
-
-
         }
-        public  List<WellDayHistory> ReadDataFromExcel(string filePath)
+        public  List<WellDayHistory> ReadDataFromExcel(string filePath, int wellId)
+        {
+            var wellDataList = new List<WellDayHistory>();
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+            using (var package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                var worksheet = package.Workbook.Worksheets[0]; 
+
+                int rowCount = worksheet.Dimension.Rows;
+
+                for (int row = 2; row <= rowCount; row++) // Начинаем с 2-й строки (первую обычно оставляют для заголовков)
+                {
+                    string[] data = worksheet.Cells[row, 1].Text.Split(',');
+                    var wellData = new WellDayHistory
+                    {
+                        Well = int.Parse(data[0]),
+                        DateFact = DateTime.Parse(data[1].Trim().Substring(1, 10)),
+                        Debit = float.Parse(data[2].Replace('.', ',')),
+                        EEConsume = float.Parse(data[3].Replace('.', ',')),
+                        Expenses = float.Parse(data[4].Replace('.', ',')),
+                        PumpOperating = float.Parse(data[5].Replace('.', ','))
+                    };
+                    if(wellId == wellData.Well)
+                    {
+                        wellDataList.Add(wellData);
+                    }
+                }
+            }
+            return wellDataList;
+        }
+        public List<WellDayHistory> ReadDataFromExcel(string filePath)
         {
             var wellDataList = new List<WellDayHistory>();
             ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
@@ -186,7 +168,6 @@ namespace VangaApi
                     string[] data = worksheet.Cells[row, 1].Text.Split(',');
                     var wellData = new WellDayHistory
                     {
-
                         Well = int.Parse(data[0]),
                         DateFact = DateTime.Parse(data[1].Trim().Substring(1, 10)),
                         Debit = float.Parse(data[2].Replace('.', ',')),
@@ -197,11 +178,10 @@ namespace VangaApi
                     wellDataList.Add(wellData);
                 }
             }
-
             return wellDataList;
         }
 
-        
+
         public List<WellPredictionResultForSerialize> ForecastData(List<WellDayHistorySup> wellData, int wellId)
         {
             List<WellDayHistory> wellDataNew = [];
@@ -220,10 +200,6 @@ namespace VangaApi
                 });
             }
             var data = mlContext.Data.LoadFromEnumerable(wellDataNew);
-            avgEEConsume = wellData.Average(d => d.EEConsume);
-            avgExpenses = wellData.Average(d => d.Expenses);
-            avgPumpOperating = wellData.Average(d => d.PumpOperating);
-
             var pipeline = mlContext.Transforms.CopyColumns("Label", "Debit")
                 .Append(mlContext.Transforms.Concatenate("Features", new[] {  "DayOfYear", "Month", "DayOfWeek", "EEConsume", "Expenses", "PumpOperating" }))
                 .Append(mlContext.Transforms.NormalizeMinMax("Features", "Features"))
@@ -249,9 +225,6 @@ namespace VangaApi
                     DayOfYear = forecastDate.DayOfYear,
                     DayOfWeek = (float)forecastDate.DayOfWeek,
                     Month = forecastDate.Month,
-                    EEConsume = avgEEConsume, // Используем среднее значение
-                    Expenses = avgExpenses,   // Используем среднее значение
-                    PumpOperating = avgPumpOperating // Примерное значение работы насоса
                 };
                 var prediction = predictionEngine.Predict(futureData);
                 forecasts.Add(new WellPredictionResultForSerialize

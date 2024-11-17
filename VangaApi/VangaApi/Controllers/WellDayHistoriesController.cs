@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace VangaApi.Controllers
@@ -16,27 +18,41 @@ namespace VangaApi.Controllers
         }
 
         [HttpPost]
+        [Obsolete]
         //[Obsolete]
         public async Task<IActionResult> GetWellDayHistories([FromBody] WellRequest request)
         {
-            var response = await _supabase.From<WellDayHistorySup>().Where(w => w.Well == request.WellId).Get();
-            //var list = Program.nr.ForecastData(response.Models, request.WellId);
+            try
+            {
+                string filePath = "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\data.xlsx"; // Укажите путь к вашему Excel файлу
 
-            
-            //var list = Program.nr.ForecastDataForAllData(request.WellId, request.AtributeId);
-            var list = Program.nr.ForecastDataForFilteredData(response.Models, request.WellId, request.AtributeId);
+                var list = Program.nr.ReadDataFromExcel(filePath, request.WellId);
+                if (list == null || list.Count == 0) 
+                {
+                    return BadRequest(500);
+                }
 
-            
+                var resplist = Program.nr.ForecastDataForFilteredData(list, request.WellId, request.AtributeId);
 
+                return Ok(resplist);
 
+            }
+            catch (Exception e)
+            {
+                Program.er.LogMessage("GetWellDayHistoriesApi", e);
+                return BadRequest();
+            }
 
-            return Ok(list);
         }
     }
+
     public class WellRequest
     {
         public int WellId { get; set; }
         public int AtributeId { get; set; }
 
     }
+
+    
+
 }

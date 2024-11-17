@@ -6,6 +6,8 @@ using VangaApi;
 class Program
 {
     public static Neiro nr;
+    public static ErrorLogger er = new ErrorLogger();
+
     public static void Main()
     {
         nr = new Neiro();
@@ -48,8 +50,8 @@ class Program
             services.AddControllers();
             services.AddSingleton<Supabase.Client>(provider =>
             {
-                string databaseUrl = "https://zlqknyuatcoldsmfnrpd.supabase.co";
-                string databaseToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpscWtueXVhdGNvbGRzbWZucnBkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMTc0Mzg5MiwiZXhwIjoyMDQ3MzE5ODkyfQ.G9O6DiCHokqCIRgfRaejDtUw7llbIvPwcspv-OY8L9Q";
+                string databaseUrl = "https://juwmddbklxkinbhndkqh.supabase.co";
+                string databaseToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1d21kZGJrbHhraW5iaG5ka3FoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE3ODAzNjcsImV4cCI6MjA0NzM1NjM2N30.8xJNnLxJ8p3YfFRmDlaOBvHQ14I0_pt1cI-IiBlQTU0";
                 return new Supabase.Client(databaseUrl, databaseToken);
             });
         }
