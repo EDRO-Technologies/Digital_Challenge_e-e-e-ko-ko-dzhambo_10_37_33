@@ -1,27 +1,27 @@
 "use client";
 
-import { Line, LineChart, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, XAxis, YAxis } from "recharts";
 import {
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart";
-import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const chartConfig = {
     date_fact: {
         label: "Дата",
         color: "hsl(var(--chart-1))",
     },
-    expenses: {
+    debit: {
         label: "Затраты",
         color: "hsl(var(--chart-2))",
     },
 };
 
 // mode is week, month, year
-export default function Component({ data, mode = "week" }) {
+export default function DebitGraphs({ data, mode }) {
     const [preparingData, setPreparingData] = useState(data);
 
     useEffect(() => {
@@ -97,7 +97,7 @@ export default function Component({ data, mode = "week" }) {
                     dataKey: "date_fact",
                     tickLine: false,
                     axisLine: false,
-                    interval:1,
+                    interval: 1,
                     tick: ({ x, y, payload }) => {
                         const value =
                             payload.index === 0 ||
@@ -130,13 +130,21 @@ export default function Component({ data, mode = "week" }) {
     }
 
     return (
-        <div className="bg-white max-w-[284px] h-[255px] w-full rounded-[32px]">
-            <p className="font-medium text-[#686868] mt-0">Общие траты</p>
-            <p className="text-2xl font-semibold mt-2">₽120,000</p>
-            <p className="text-[#767676] mt-[3px]">+20% с прошлого дня</p>
+        <div className="bg-white max-h-[255px] py-4  px-5 w-full rounded-[32px]">
+            <div className="flex flex-row flex-grow items-center max-h-[87px]">
+                <div className="flex flex-row items-center space-x-3">
+                    <div className="background-contrast-for-icons">
+                        <Image src="/Waterfall.svg" width={16} height={16} />
+                    </div>
+                    <p className="align-middle">Дебит скважины</p>
+                    <p className="self-start text-xs">м3</p>
+                </div>
+
+                <div></div>
+            </div>
 
             <ChartContainer className="w-full" config={chartConfig}>
-                <LineChart accessibilityLayer data={preparingData}>
+                <AreaChart accessibilityLayer data={preparingData}>
                     <XAxis {...XAxisProps()} />
                     <YAxis
                         hide={true}
@@ -151,14 +159,14 @@ export default function Component({ data, mode = "week" }) {
                             <ChartTooltipContent hideLabel indicator="line" />
                         }
                     />
-                    <Line
-                        dataKey="expenses"
+                    <Area
+                        dataKey="debit"
                         type="natural"
-                        fill="var(--color-expenses)"
+                        fill="var(--color-debit)"
                         fillOpacity={0.4}
-                        stroke="var(--color-expenses)"
+                        stroke="var(--color-debit)"
                     />
-                </LineChart>
+                </AreaChart>
             </ChartContainer>
         </div>
     );
