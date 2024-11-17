@@ -1,0 +1,195 @@
+﻿{
+  "Scenario": "Forecasting",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\data.txt",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": false,
+    "ColumnProperties": [
+      {
+        "ColumnName": "col0",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "col1",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "col2",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "col3",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "col4",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      },
+      {
+        "ColumnName": "col5",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 4
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 3.1085419877520279,
+        "RuntimeInSeconds": 41.091,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 225,
+            "SeriesLength": 324,
+            "TrainSize": 173485,
+            "Horizon": 100000,
+            "OutputColumnName": "col2",
+            "InputColumnName": "col2",
+            "ConfidenceLowerBoundColumn": "col2_LB",
+            "ConfidenceUpperBoundColumn": "col2_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 3.1100077871010887,
+        "RuntimeInSeconds": 44.685,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 227,
+            "SeriesLength": 348,
+            "TrainSize": 173485,
+            "Horizon": 100000,
+            "OutputColumnName": "col2",
+            "InputColumnName": "col2",
+            "ConfidenceLowerBoundColumn": "col2_LB",
+            "ConfidenceUpperBoundColumn": "col2_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 3.3371002423057159,
+        "RuntimeInSeconds": 81.287,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 411,
+            "SeriesLength": 929,
+            "TrainSize": 173485,
+            "Horizon": 100000,
+            "OutputColumnName": "col2",
+            "InputColumnName": "col2",
+            "ConfidenceLowerBoundColumn": "col2_LB",
+            "ConfidenceUpperBoundColumn": "col2_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 3.8116631395391343,
+        "RuntimeInSeconds": 47.997,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 262,
+            "SeriesLength": 344,
+            "TrainSize": 173485,
+            "Horizon": 100000,
+            "OutputColumnName": "col2",
+            "InputColumnName": "col2",
+            "ConfidenceLowerBoundColumn": "col2_LB",
+            "ConfidenceUpperBoundColumn": "col2_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 3.8876438568962097,
+        "RuntimeInSeconds": 57.989,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 306,
+            "SeriesLength": 338,
+            "TrainSize": 173485,
+            "Horizon": 100000,
+            "OutputColumnName": "col2",
+            "InputColumnName": "col2",
+            "ConfidenceLowerBoundColumn": "col2_LB",
+            "ConfidenceUpperBoundColumn": "col2_UB"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ForecastBySsa"
+    },
+    "Schema": "e0",
+    "MetricName": "RMSE",
+    "ModelFilePath": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\MLModel.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 4,
+  "TrainingOption": {
+    "Version": 2,
+    "Type": "ForecastingTrainingOption",
+    "TrainingTime": 600,
+    "UseCrossValidation": false,
+    "OptimizeMetric": "RMSE",
+    "Horizon": 100000,
+    "TimeColumn": "col1",
+    "LabelColumn": "col2",
+    "UseDefaultIndex": false,
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "TrainValidateSplitValidationOption",
+      "SplitRatio": 0.2
+    }
+  }
+}

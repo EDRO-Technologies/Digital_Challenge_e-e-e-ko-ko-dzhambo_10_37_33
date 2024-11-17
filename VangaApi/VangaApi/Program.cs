@@ -15,7 +15,7 @@ class Program
 
         var builder = WebApplication.CreateBuilder();
 
-
+        
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -25,6 +25,7 @@ class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+        
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
@@ -54,6 +55,11 @@ class Program
                 string databaseToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1d21kZGJrbHhraW5iaG5ka3FoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE3ODAzNjcsImV4cCI6MjA0NzM1NjM2N30.8xJNnLxJ8p3YfFRmDlaOBvHQ14I0_pt1cI-IiBlQTU0";
                 return new Supabase.Client(databaseUrl, databaseToken);
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -62,7 +68,13 @@ class Program
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Remove("Access-Control-Allow-Origin");
+                context.Response.Headers.Remove("Access-Control-Allow-Methods");
+                context.Response.Headers.Remove("Access-Control-Allow-Headers");
+                await next();
+            });
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

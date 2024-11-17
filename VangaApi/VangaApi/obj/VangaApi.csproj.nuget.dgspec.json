@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[4.0.0, )"
             },
+            "Microsoft.ML.TimeSeries": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
             "Supabase": {
               "target": "Package",
               "version": "[1.1.1, )"

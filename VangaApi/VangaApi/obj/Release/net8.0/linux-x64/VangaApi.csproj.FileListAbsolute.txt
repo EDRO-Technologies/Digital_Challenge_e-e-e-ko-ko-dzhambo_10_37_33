@@ -68,3 +68,7 @@ C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\V
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\VangaApi.pdb
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\VangaApi.genruntimeconfig.cache
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\ref\VangaApi.dll
+C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\bin\Release\net8.0\linux-x64\MLModel.mlnet
+C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\bin\Release\net8.0\linux-x64\Microsoft.ML.TimeSeries.dll
+C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\bin\Release\net8.0\linux-x64\libMklImports.so
+C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\bin\Release\net8.0\linux-x64\libMklProxyNative.so

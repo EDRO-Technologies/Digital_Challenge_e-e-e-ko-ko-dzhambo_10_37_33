@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <History>True|2024-11-17T01:42:11.2908380Z||;False|2024-11-17T06:40:54.4857426+05:00||;</History>
+    <History>True|2024-11-17T05:45:39.0188874Z||;True|2024-11-17T10:26:17.4441897+05:00||;True|2024-11-17T07:16:44.5244920+05:00||;True|2024-11-17T07:12:36.0592546+05:00||;True|2024-11-17T07:08:19.2913380+05:00||;True|2024-11-17T06:42:11.2908380+05:00||;False|2024-11-17T06:40:54.4857426+05:00||;</History>
     <LastFailureDetails />
     <_PublishTargetUrl>C:\Users\Andrey\Desktop\deploy</_PublishTargetUrl>
   </PropertyGroup>

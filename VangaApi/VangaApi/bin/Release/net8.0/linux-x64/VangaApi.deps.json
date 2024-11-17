@@ -11,6 +11,7 @@
         "dependencies": {
           "EPPlus": "7.5.0",
           "Microsoft.ML": "4.0.0",
+          "Microsoft.ML.TimeSeries": "2.0.0",
           "Microsoft.NET.ILLink.Tasks": "8.0.5",
           "Supabase": "1.1.1",
           "Swashbuckle.AspNetCore": "6.4.0"
@@ -231,6 +232,28 @@
           "lib/netstandard2.0/Microsoft.ML.DataView.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "4.0.24.56302"
+          }
+        }
+      },
+      "Microsoft.ML.Mkl.Redist/2.0.0": {
+        "native": {
+          "runtimes/linux-x64/native/libMklImports.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libMklProxyNative.so": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.ML.TimeSeries/2.0.0": {
+        "dependencies": {
+          "Microsoft.ML": "4.0.0",
+          "Microsoft.ML.Mkl.Redist": "2.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.ML.TimeSeries.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "2.0.22.55704"
           }
         }
       },
@@ -630,6 +653,20 @@
       "sha512": "sha512-qFLqB+uv+DQvm3xsKeQ83sjw/0Hh9LxZkCDnHOC2lc869yLBXHEtggf+7GccRXYNoB/PnaveRVuWQk3s3uuZKw==",
       "path": "microsoft.ml.dataview/4.0.0",
       "hashPath": "microsoft.ml.dataview.4.0.0.nupkg.sha512"
+    },
+    "Microsoft.ML.Mkl.Redist/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q4OTPx4N2O93eHicyeFhQsod0ED2gdTWcaWzhVtAghx4V3F6XCYJ0Q0XrPVsjwVqSgpcE/JJkV8Kov+2taQWYw==",
+      "path": "microsoft.ml.mkl.redist/2.0.0",
+      "hashPath": "microsoft.ml.mkl.redist.2.0.0.nupkg.sha512"
+    },
+    "Microsoft.ML.TimeSeries/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vY8KNpVTIpsq8HY3tIcX4jRKJ4IPV0CD/LK3S1Tyvx2NlH2miWM0DgiSMKR0lwGjEXcdtkLsF2PmNxsAJiomFg==",
+      "path": "microsoft.ml.timeseries/2.0.0",
+      "hashPath": "microsoft.ml.timeseries.2.0.0.nupkg.sha512"
     },
     "Microsoft.NET.ILLink.Tasks/8.0.5": {
       "type": "package",

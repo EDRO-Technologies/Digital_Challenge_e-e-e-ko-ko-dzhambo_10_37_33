@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/Usg6u0Jsrk=",
+  "dgSpecHash": "51Zykdm+q1M=",
   "success": true,
   "projectFilePath": "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\VangaApi.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,8 @@
     "C:\\Users\\Andrey\\.nuget\\packages\\microsoft.ml\\4.0.0\\microsoft.ml.4.0.0.nupkg.sha512",
     "C:\\Users\\Andrey\\.nuget\\packages\\microsoft.ml.cpumath\\4.0.0\\microsoft.ml.cpumath.4.0.0.nupkg.sha512",
     "C:\\Users\\Andrey\\.nuget\\packages\\microsoft.ml.dataview\\4.0.0\\microsoft.ml.dataview.4.0.0.nupkg.sha512",
+    "C:\\Users\\Andrey\\.nuget\\packages\\microsoft.ml.mkl.redist\\2.0.0\\microsoft.ml.mkl.redist.2.0.0.nupkg.sha512",
+    "C:\\Users\\Andrey\\.nuget\\packages\\microsoft.ml.timeseries\\2.0.0\\microsoft.ml.timeseries.2.0.0.nupkg.sha512",
     "C:\\Users\\Andrey\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Andrey\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
     "C:\\Users\\Andrey\\.nuget\\packages\\mimemapping\\3.0.1\\mimemapping.3.0.1.nupkg.sha512",

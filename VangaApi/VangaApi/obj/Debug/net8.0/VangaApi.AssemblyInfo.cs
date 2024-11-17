@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VangaApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0226c09c9cf10a0492af20dfb96f4a48dcad83a7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c153b3783eab4dea09e4f2a2b4aed7794a247da9")]
 [assembly: System.Reflection.AssemblyProductAttribute("VangaApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VangaApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

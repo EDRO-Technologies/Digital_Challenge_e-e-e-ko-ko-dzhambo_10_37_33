@@ -1,6 +1,9 @@
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\appsettings.Development.json
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\appsettings.json
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\VangaApi.pdb
+C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\MLModel.mlnet
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\libLdaNative.so
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\libLdaNative.so.dbg
+C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\libMklImports.so
+C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\libMklProxyNative.so
 C:\Users\Andrey\Desktop\hakaton\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\VangaApi\VangaApi\obj\Release\net8.0\linux-x64\PubTmp\Out\VangaApi

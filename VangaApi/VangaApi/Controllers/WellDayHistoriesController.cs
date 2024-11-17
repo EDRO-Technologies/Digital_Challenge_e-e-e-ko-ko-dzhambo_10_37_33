@@ -24,7 +24,8 @@ namespace VangaApi.Controllers
         {
             try
             {
-                string filePath = "C:\\Users\\Andrey\\Desktop\\hakaton\\Digital_Challenge_e-e-e-ko-ko-dzhambo_10_37_33\\VangaApi\\VangaApi\\data.xlsx"; // Укажите путь к вашему Excel файлу
+
+                string filePath = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "data.xlsx"; // Укажите путь к вашему Excel файлу
 
                 var list = Program.nr.ReadDataFromExcel(filePath, request.WellId);
                 if (list == null || list.Count == 0) 

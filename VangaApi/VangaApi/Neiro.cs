@@ -107,7 +107,7 @@ namespace VangaApi
 
         public Neiro()
         {
-            string filePath = "C:\\Users\\Andrey\\source\\repos\\ConsoleApp2\\ConsoleApp2\\data.xlsx"; // Укажите путь к вашему Excel файлу
+            string filePath = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "data.xlsx"; // Укажите путь к вашему Excel файлу
             List< WellDayHistory> wellData = ReadDataFromExcel(filePath);
             foreach (var edata in wellData)
             {
