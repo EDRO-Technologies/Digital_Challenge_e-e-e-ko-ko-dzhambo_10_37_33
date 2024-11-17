@@ -22,8 +22,23 @@ const chartConfig = {
     },
 };
 
-export default function DebitGraphs({ data, prediction }) {
+export default function DebitGraphs({ data, prediction , mode }) {
     const [isPredication, setIsPrediction] = useState(false);
+    const [preparingData , setPreparingData] = useState([])
+
+    useEffect(() => {
+        if (mode === "year") {
+            const newData = [];
+
+            for (let i = 1; i < 360; i += 30) {
+                newData.push(data?.[i]);
+            }
+
+            setPreparingData(newData);
+        } else {
+            setPreparingData(data);
+        }
+    }, [data, setPreparingData]);
 
     const activePredicationClasses =
         "bg-black cursor-pointer px-[11px] text-white rounded-full text-[11px] font-medium py-[12px]";
@@ -83,8 +98,8 @@ export default function DebitGraphs({ data, prediction }) {
             {isPredication ? (
                 <ChartContainer className="h-[75%]" config={chartConfig}>
                     <AreaChart accessibilityLayer data={data}>
-                        <XAxis dataKey="date_fact" />
-                        <Area dataKey="debit" />
+                        <XAxis dataKey="date" />
+                        <Area dataKey="predictedDebit" />
                         <YAxis
                             hide={false}
                             domain={["dataMin - 5", "dataMax + 5"]}
@@ -94,7 +109,7 @@ export default function DebitGraphs({ data, prediction }) {
                 </ChartContainer>
             ) : (
                 <ChartContainer className="h-[75%]" config={chartConfig}>
-                    <AreaChart accessibilityLayer data={data}>
+                    <AreaChart accessibilityLayer data={preparingData}>
                         <XAxis dataKey="date_fact" />
                         <Area dataKey="debit" />
                         <YAxis

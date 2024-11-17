@@ -9,6 +9,26 @@ import { DateTime } from "luxon";
 import ModelVishka from "@/components/3d models/ModelVishka";
 import DebitGraphs from "@/components/debit-graphs";
 import Header from "@/components/Header";
+import axios from "axios";
+
+import * as React from "react"
+import { Check, ChevronsUpDown } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import {
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+} from "@/components/ui/command"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
 
 const mods = [
     {
@@ -31,6 +51,7 @@ export default function Page() {
     const [well, setWell] = useState(null);
     const [predictionDebit, setPredictionDebit] = useState(null);
     const [mode, setMode] = useState("week");
+    const [open, setOpen] = React.useState(false)
 
     useEffect(() => {
         (async () => {
@@ -46,22 +67,15 @@ export default function Page() {
         })();
 
         (async () => {
-            // const res = await fetch(process.env.NEXT_PUBLIC_AI_URL, {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "text/plain",
-            //     },
-            //     mode: "no-cors",
-            //     body: JSON.stringify({
-            //         WellId: params.id,
-            //         AttributeId: 1,
-            //     }),
-            // });
+            const res = await axios.post(process.env.NEXT_PUBLIC_AI_URL, JSON.stringify({
+                WellId: params.id,
+                AttributeId: 1,
+            }));
 
-            // const data = res.json();
-            // console.log(res)
+            const data = await res.data;
+            console.log(data)
 
-            // setPredictionDebit(data);
+            setPredictionDebit(data);
         })();
     }, []);
 
@@ -96,15 +110,54 @@ export default function Page() {
                 <div className="my-[35px] flex w-full justify-between pl-[82px]">
                     <h1 className="text-[42px] font-medium">Куст 2, Сургут</h1>
                     <div className="flex">
-                        <div className="max-w-[137px] w-full h-[36px] rounded-full border border-[#E3E2E7] flex items-center">
-                            <span className="font-medium text-xs text-black pl-[15px]">
-                                Показ: Неделя
-                            </span>
-                            <img
-                                src="/arrow_down.svg"
-                                alt="arrow"
-                                className="w-[12px] h-[12px] ml-[5px] mr-[10px] mt-[1px]"
-                            />
+                        <div className="max-w-[137px] w-full h-[36px] rounded-full flex items-center">
+                            <Popover open={open} onOpenChange={setOpen}>
+                                <PopoverTrigger asChild>
+                                    <Button
+                                        variant="outline"
+                                        role="combobox"
+                                        aria-expanded={open}
+                                        className="w-[160px] justify-between"
+                                    >
+                                        {mode
+                                            ? mods.find((mod) => mod.value === mode)?.label
+                                            : "Выберите режим"}
+                                        <img
+                                            src="/arrow_down.svg"
+                                            alt="arrow"
+                                            className="w-[12px] h-[12px] ml-[5px] mr-[10px] mt-[1px]"
+                                        />
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-[200px] p-0">
+                                    <Command>
+                                        <CommandList>
+                                            <CommandEmpty>Не найдено</CommandEmpty>
+                                            <CommandGroup>
+                                                {mods.map((mod) => (
+                                                    <CommandItem
+                                                        key={mod.value}
+                                                        value={mod.value}
+                                                        onSelect={(currentValue) => {
+                                                            setMode(currentValue === mode ? "" : currentValue)
+                                                            setOpen(false)
+                                                        }}
+                                                    >
+                                                        <Check
+                                                            className={cn(
+                                                                "mr-2 h-4 w-4",
+                                                                mode === mod.value ? "opacity-100" : "opacity-0"
+                                                            )}
+                                                        />
+                                                        {mod.label}
+                                                    </CommandItem>
+                                                ))}
+                                            </CommandGroup>
+                                        </CommandList>
+                                    </Command>
+                                </PopoverContent>
+
+                            </Popover>
                         </div>
                         <div className="w-[190px] h-[36px] bg-white rounded-full mx-[8px] flex justify-center items-center">
                             <span className="font-medium text-xs">
