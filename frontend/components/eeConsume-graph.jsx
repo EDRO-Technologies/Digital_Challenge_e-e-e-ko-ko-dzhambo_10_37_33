@@ -130,7 +130,7 @@ export default function EeConsumeGraph({ data, mode = "week" }) {
             }
         }
     }
-    const lastExpencing = preparingData?.[0].expenses
+    // const lastExpencing = preparingData?.[0]?.expenses
     return (
         // <div className="bg-white h-[255px] w-full rounded-[32px] flex flex-col">
         <ChartContainer

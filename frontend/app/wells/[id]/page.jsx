@@ -60,7 +60,7 @@ export default function Page() {
             const { data, error } = await supabase
                 .from("wells")
                 .select("*, wellDayHistory:well_day_histories(*)")
-                .eq("well_id", params.id)
+                .eq("id", params.id)
                 .single();
 
             if (error) throw new Error(error);
@@ -68,33 +68,33 @@ export default function Page() {
             setWell(data);
         })();
 
-        (async () => {
-            const res = await axios.post(
-                process.env.NEXT_PUBLIC_AI_URL,
-                JSON.stringify({
-                    WellId: params.id,
-                    AttributeId: 1,
-                }),
-            );
+        // (async () => {
+        //     const res = await axios.post(
+        //         process.env.NEXT_PUBLIC_AI_URL,
+        //         JSON.stringify({
+        //             WellId: params.id,
+        //             AttributeId: 1,
+        //         }),
+        //     );
 
-            const data = await res.data;
+        //     const data = await res.data;
 
-            setPredictionDebit(data);
-        })();
+        //     setPredictionDebit(data);
+        // })();
 
-        (async () => {
-            const res = await axios.post(
-                process.env.NEXT_PUBLIC_AI_URL,
-                JSON.stringify({
-                    WellId: params.id,
-                    AttributeId: 2,
-                }),
-            );
+        // (async () => {
+        //     const res = await axios.post(
+        //         process.env.NEXT_PUBLIC_AI_URL,
+        //         JSON.stringify({
+        //             WellId: params.id,
+        //             AttributeId: 2,
+        //         }),
+        //     );
 
-            const data = await res.data;
+        //     const data = await res.data;
 
-            setEeConsumePrediction(data);
-        })();
+        //     setEeConsumePrediction(data);
+        // })();
     }, []);
 
     function getWellByMode(isPredict = false) {
@@ -323,7 +323,7 @@ export default function Page() {
                                         <span className="text-[36px] font-medium ml-[17px] mt-[10px]">
                                             {
                                                 getWellByMode()?.[0]
-                                                    .pump_operating
+                                                    ?.pump_operating
                                             }
                                             ч
                                         </span>

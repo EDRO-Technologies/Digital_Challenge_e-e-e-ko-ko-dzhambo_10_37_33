@@ -129,7 +129,7 @@ export default function Component({ data, mode = "week" }) {
             }
         }
     }
-    const lastExpencing = preparingData?.[0].expenses
+    const lastExpencing = preparingData?.[0]?.expenses ?? 3
     return (
         <div className="bg-white max-w-[284px] h-[255px] w-full rounded-[32px] flex flex-col">
             <p className="font-medium text-[#686868] mt-[24px] ml-[24px] text-[16px]">Общие траты</p>
